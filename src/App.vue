@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NavBar />
+    <TransferList @openModal="showModal = true" />
+    <ModalNewTransfer :showModal.sync="showModal" @closeModal="showModal = false" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from './components/Navbar/NavBar.vue';
+import TransferList from './features/TransferList.vue';
+import ModalNewTransfer from './features/Transfer/new/ModalNewTransfer.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    NavBar,
+    TransferList,
+    ModalNewTransfer,
+  },
+  data() {
+    return {
+      showModal: false
+    }
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
